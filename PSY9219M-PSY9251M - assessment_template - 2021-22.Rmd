@@ -1,0 +1,141 @@
+---
+title: "PSY9219M/PSY9251M Assessment - 2021/22"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r eval = FALSE, include = FALSE}
+# If you need to install the necessary packages after installing your own copy of R and RStudio, use the code here to do so. You can try running the chunk or copying the code to the R Console.
+install.packages(c("tidyverse", "emmeans", "afex", "performance", "ggbeeswarm", "see"))
+```
+
+
+## Question 1 **(9 marks)**
+
+1a. How would you load the `performance` package? Assume that the package is already installed.  **1 mark**
+
+
+
+1b. Write the code required to load the package and the command that you would you need to use to load the file `assessment_information.xlsx` into R and assign it to an object called `assessment_information`. **2 marks**
+
+
+
+1c. In the command `lm(weight ~ height, data = BMI)`, which variable is the dependent variable and which is the independent variable? **1 mark**
+
+
+
+1d. Replace each instance of the word NULL in the following `ggplot()` call with the elements necessary to recreate the figure shown below, which was produced from the `crime_replication_dataset` provided for this assignment. Note that you only need to supply the correct code, not actually reproduce the figure. **4 marks**
+
+ggplot(data = NULL, aes(x = NULL, y = NULL)) +
+ geom_NULL()
+ 
+![repro_plot](reproduce_this_plot.png)
+
+ 
+1e. Write out an appropriate command that would keep only rows in the “crime_replication” data where participants were under the age of 20 and had not been a victim of crime. **1 marks**
+
+# The Fear of Crime replication study
+
+## Question 2 (31 marks)
+
+### Study description
+
+Your supervisor performed a partial replication of the Fear of Crime study by Ellis & Renouf (2018). The original study examined how a variety of different measures of personality might be predictive of how fearful of crime a given person might be. An issue that your supervisor noted with the original study was that the sample was quite imbalanced with respect to the two primary categorical variables – sex and whether the participant had been a victim of crime. Thus, your supervisor made a concerted effort to recruit a better balanced sample with respect to these variables. 
+For their version of the study, your supervisor focussed on the effects of anxiety on fear of crime. Each participant completed a questionnaire regarding their fear of crime and the State-Trait Anxiety questionnaire, which provides measures of 1) how anxious a person feels at the time of completing the questionnaire (“State anxiety”) and 2) how anxious a person is in general (“Trait anxiety”). The resulting dataset is available in .csv format. The data should be loaded using the `read_csv()` function from the `readr` package.
+
+```{r echo = FALSE}
+# Load all packages you need in this code chunk
+
+
+
+```
+
+### 2a. Basic descriptives **(8 marks)**
+Your supervisor wants you to perform some statistical analysis and exploration of the data. They have a couple of requests for some simple summary statistics and visualizations of the data.
+
+1. They want to check:
+  a.	how many men and women were and were not victims of crime
+  b.	the average level of fear of crime for each combination of the two categorical variables
+  c.	how much variability there is in fear of crime for each combination of the two categorical variables. 
+
+At this stage, your supervisor only wants to see these key pieces of information; no statistical tests are required. Produce a single basic summary table that provides the information that your supervisor requested. Ensure that you choose appropriate summary statistics for each element. **3 marks**
+
+```{r create-summary-table}
+
+
+
+```
+
+2.	Your supervisor’s second request is to be able to see how fear of crime is distributed in the data across the different groups. Using `ggplot2`, provide a figure allowing visual comparison of the distribution of `fear_of_crime` for each combination of the two categorical variables – “sex” and “crime_victim”. **5 marks**
+
+```{r create-figure}
+
+
+
+```
+
+
+###  2b. Correlation and regression **(12 marks)**
+Your supervisor then asks you to examine the relationships between three of the continuous variables in the data – fear of crime, state anxiety, and trait anxiety. 
+
+1. Examine and report the correlations between the three continuous variables `fear_of_crime`, `state_anxiety`, and `trait_anxiety`.  **4 marks**
+
+```{r correlation-coefficients}
+
+
+
+```
+
+
+2. Using linear regression, model fear of crime as a function of state anxiety, trait anxiety, or both state and trait anxiety. Compare models to determine which model provides the best fit, and summarise the results accordingly.  **8 marks**
+
+```{r foc-scatter}
+
+
+
+```
+
+### 2c. ANOVA **(10 marks)**
+Finally, your supervisor then asks you to test whether levels of fear of crime differ between male and female participants, and whether this depends on whether they have been a victim of crime or not.
+
+1.	Why and how would you address this request using ANOVA? **2 marks**
+
+2.	Run the appropriate ANOVA. If post-hoc tests are necessary, perform them. If not, explain why they are not necessary. **4 marks**
+
+```{r run-anova}
+
+
+
+```
+
+3.	Check whether the assumptions of ANOVA are met. Explain which statistical tests you are using for this purpose and why. **4 marks**
+
+```{r check-assumptions}
+
+```
+
+## Question 3 (27 marks)
+
+Your supervisor asks you to write a report. This report will be presented and discussed at the annual meeting with the steering committee of the Fear of Crime Project, which consists of academics, police representatives, support counsellors, and of members of a local support group for people who have been victims of crime. To ensure that the findings are clear to all members of the group, you are asked to break this report down into 3 sections. The recommended word-count for each section is included.
+
+### Lay summary Project ‘Fear of Crime’
+
+The first section should be a **lay summary** of the aim of the project and the key findings. For this section, it is important to consider the potential impact of the findings for the different steering group members and to phrase the findings in a way that is meaningful for all attendees. Consider which statistics and graphs would be relevant for the non-academic attendees. (approx. 250 words). **5 marks**
+
+### Details of statistical results
+The second section should be in the style of a typical result section of a peer reviewed journal article. In this section you should consider the academics as your audience. Report the results of all statistical analyses conducted for Question 2, including figures/graphs and tables where you believe that they would be useful. (approx. 750 words). **17 marks**
+
+### Limitations and recommendations
+In the third section, you can raise key limitations of the chosen design/analyses and recommend/conduct different or additional analyses. (approx. 250 words). **5 marks**
+
+
+## Question 4 **(34 marks)**
+
+The Fear of Crime study attempts to examine how people’s anxiety impacts their expressed fear of crime, with a particular focus on whether expressed fear of crime reflects current anxiety (i.e. State Anxiety) or long-term personality characteristics (i.e. Trait Anxiety). In addition, the project examines how gender and whether status as a victim of a crime influences reported Fear of Crime. Critically and comparatively evaluate the advantages and disadvantages to investigating people’s fear of crime as a function of these variables via the experimental method described earlier, as contrasted with taking a qualitative approach to the topic. Ensure that in your answer you include comparison/contrast with:
+
+a)	At least 2 qualitative data collection techniques (e.g. interviewing, generated documents, observation, etc.) **17 marks**
+
+b)	A Q-Methodology approach  **17 marks**
